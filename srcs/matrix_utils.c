@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:24:05 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:24:13 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/10 09:42:20 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,15 @@ static t_point3D	**get_rotor_matrix(t_matrix matrix)
 }
 
 
-void	free_rotor_matrix(t_point3D **rotor)
+void free_rotor_matrix(t_point3D **rotor)
 {
-	free(rotor[0]);
-	free(rotor[1]);
-	free(rotor[2]);
-	free(rotor);
-	return (NULL);
+    if (rotor)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (rotor[i])
+                free(rotor[i]);
+        }
+        free(rotor);
+    }
 }
