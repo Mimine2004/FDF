@@ -35,7 +35,7 @@ SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
 	mlx_destroy_display.c\
 	../srcs/mlx.c 	\
 	../srcs/convert_map.c 	\
-	../srcs/convert_map_utils.c
+	../srcs/convert_map_utils.c \
 	../srcs/draw.c 	\
 	../srcs/draw_utils.c 	\
 	../srcs/keys.c 	\
@@ -53,10 +53,10 @@ CFLAGS	= -O3 -I$(INC)
 all	: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
-$(NAME)	: $(OBJ)
+$(NAME): $(OBJ)
 	ar -r $(NAME) $(OBJ)
 	ranlib $(NAME)
 	cp $(NAME) $(NAME_UNAME)

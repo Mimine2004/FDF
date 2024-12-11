@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:16:37 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:17:07 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:08:10 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_point3D
 	int		last;
 }			t_point3D;
 
-typedef struct s_mlx
+/* typedef struct s_mlx
 {
 	void	*img;
 	int		bits_per_pixel;
@@ -41,7 +41,15 @@ typedef struct s_mlx
 	int		width;
 	int		height;
 	t_point2D	pos;
-}			t_mlx;
+}			t_mlx; */
+
+typedef struct s_mlx
+{
+	t_xvar     *mlx_ptr;  
+	t_win_list *win_ptr;  
+	int         width;
+	int         height;
+} t_mlx;
 
 typedef struct s_matrix
 {

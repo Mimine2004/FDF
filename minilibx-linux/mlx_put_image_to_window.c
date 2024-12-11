@@ -10,7 +10,7 @@
 
 
 
-#include	"mlx_int.h"
+#include "../includes/mlx.h"
 
 
 int	mlx_put_image_to_window(t_xvar *xvar,t_win_list *win,t_img *img,

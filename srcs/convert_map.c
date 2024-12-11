@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:15:31 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:15:39 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:23:20 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	convert_map(t_fdf *prog, int alloc)
 		{
 			pro = prog->matrix.matrix3D[i][j];
 			pro.z = prog->matrix.matrix3D[i][j].z + prog->matrix.plus_z;
-			pro = multiple(rot[2], muliple(rot[1], multiple(rot[0], pro)));
+			pro.last = multiple(rot[2], muliple(rot[1], multiple(rot[0], pro)));
 			prog->matrix.matrix2D[i][j].x = pro.x * prog->matrix.scale + prog->matrix.t_x;
 			prog->matrix.matrix2D[i][j].y = pro.y * prog->matrix.scale + prog->matrix.t_y;
 		}

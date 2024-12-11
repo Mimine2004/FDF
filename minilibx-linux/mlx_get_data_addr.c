@@ -10,7 +10,7 @@
 
 
 
-#include	"mlx_int.h"
+#include "../includes/mlx.h"
 
 
 char	*mlx_get_data_addr(t_img *img,int *bits_per_pixel,

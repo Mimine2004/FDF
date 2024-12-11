@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:10:22 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:11:22 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:10:30 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 
 int	deal_key(int keyboard, void *param)
 {
-	t_fdf	*prog;
+    t_fdf	*prog;
 
-	prog = (t_fdf *)param;
-	if (keyboard = KEYBOARD_I || keyboard == KEYBOARD_R || keyboard == KEYBOARD_T)
-		set_isometric(prog);
-	else if (keyboard == KEYBOARD_PLUS)
-		prog->matrix.plus_z += 0.2;
-	else if (keyboard == KEYBOARD_MINUS)
-		prog->matrix.plus_z -= 0.2;
-	else if (keyboard == KEYBOARD_ESC)
-		exit (EXIT_SUCCESS);
-	else if (!set_color(keyboard, prog))
-	{
-		prog->mouse_down = 1;
-		return (0);
-	}
-	prog->mouse_down = 0;
-	return (0);
+    if (!param)
+        return (0);
+    prog = (t_fdf *)param;
+
+    // Handle different keypresses
+    if (keyboard == KEYBOARD_I || keyboard == KEYBOARD_R || keyboard == KEYBOARD_T)
+        set_isometric(prog);
+    else if (keyboard == KEYBOARD_PLUS)
+        prog->matrix.plus_z += 0.2;
+    else if (keyboard == KEYBOARD_MINUS)
+        prog->matrix.plus_z -= 0.2;
+    else if (keyboard == KEYBOARD_ESC)
+        exit(EXIT_SUCCESS);
+    else if (!set_color(keyboard, prog)) // Handle unknown keys
+    {
+        prog->mouse_down = 1;
+        return (0);
+    }
+    prog->mouse_down = 0;
+    return (0);
 }
 
 int	push_mouse(int keyboard, int x, int y, void *param)

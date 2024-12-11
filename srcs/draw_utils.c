@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:21:24 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:22:22 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:10:16 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 void	draw_order(t_fdf *prog)
 {
-	draw_rectangle(prog, get_tpoint(0, 0), get_tpoint(prog->width,
-		((t_mlx *)(prog->mlx))->pos.y), 0x151515);
-	mlx_string_put(prog->mlx, prog->win, 10, 20, 0xFFFFFF, "FDF - Controls");
-	mlx_string_put(prog->mlx, prog->win, 20, 35, 0xFFFFFF, "Left click: rotate"); 
-	mlx_string_put(prog->mlx, prog->win, 20, 48, 0xFFFFFF, "Right click: rotate");
-	mlx_string_put(prog->mlx, prog->win, 20, 61, 0xFFFFFF, "Mouse wheel: zoom");
-	mlx_string_put(prog->mlx, prog->win, 20, 74, 0xFFFFFF, "+/-: zoom view");
-	mlx_string_put(prog->mlx, prog->win, 20, 113, 0xFFFFFF, "I: isometric view");
-	mlx_string_put(prog->mlx, prog->win, 20, 87, 0xFFFFFF, "T: trimetric view");
-	mlx_string_put(prog->mlx, prog->win, 20, 100, 0xFFFFFF, "R: dimetric view");
-	draw_color_order(prog);
-	mlx_string_put(prog->mlx, prog->win, 500, 74, 0xFFFFFF, "Viewing : ");
-	if (ft_strrchr(prog->filename, '/') > 0)
-		mlx_string_put(prog->mlx, prog->win, 640, 74, 0xFFFFFF, 
-			ft_strrchr(prog->filename, '/') + 1);
-	else
-		mlx_string_put(prog->mlx, prog->win, 640, 74, 0xFFFFFF, prog->filename);
+    if (!prog || !prog->mlx || !prog->win) // Check for NULL pointers
+        return;
+
+    draw_rectangle(prog, get_tpoint(0, 0), get_tpoint(prog->width, ((t_mlx *)(prog->mlx))->pos.y), 0x151515);
+    mlx_string_put(prog->mlx, prog->win, 10, 20, 0xFFFFFF, "FDF - Controls");
+    mlx_string_put(prog->mlx, prog->win, 20, 35, 0xFFFFFF, "Left click: rotate");
+    mlx_string_put(prog->mlx, prog->win, 20, 48, 0xFFFFFF, "Right click: rotate");
+    mlx_string_put(prog->mlx, prog->win, 20, 61, 0xFFFFFF, "Mouse wheel: zoom");
+    mlx_string_put(prog->mlx, prog->win, 20, 74, 0xFFFFFF, "+/-: zoom view");
+    mlx_string_put(prog->mlx, prog->win, 20, 87, 0xFFFFFF, "I: isometric view");
+    mlx_string_put(prog->mlx, prog->win, 20, 100, 0xFFFFFF, "T: trimetric view");
+    mlx_string_put(prog->mlx, prog->win, 20, 113, 0xFFFFFF, "R: dimetric view");
+    draw_color_order(prog);
 }
 
 void	draw_color_order(t_fdf *prog)

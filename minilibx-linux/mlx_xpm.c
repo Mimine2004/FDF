@@ -9,7 +9,7 @@
  */
 
 
-#include	"mlx_int.h"
+#include	"../includes/mlx.h"
 
 extern struct s_col_name mlx_col_name[];
 

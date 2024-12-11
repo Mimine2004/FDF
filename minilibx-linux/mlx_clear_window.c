@@ -10,7 +10,7 @@
 
 
 
-#include	"mlx_int.h"
+#include "../includes/mlx.h"
 
 
 int		mlx_clear_window(t_xvar *xvar,t_win_list *win)

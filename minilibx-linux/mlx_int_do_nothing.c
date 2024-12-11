@@ -8,7 +8,7 @@
 ** Last update Tue Sep 25 15:56:22 2001 Charlie Root
 */
 
-
+#include "../includes/mlx.h"
 
 int	mlx_int_do_nothing(void *param)
 {

@@ -9,7 +9,7 @@
 */
 
 
-#include	"mlx_int.h"
+#include "../includes/mlx.h"
 
 extern int	(*(mlx_int_param_event[]))();
 

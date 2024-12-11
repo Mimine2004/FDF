@@ -8,7 +8,7 @@
 
 /* global for independant extension */
 
-RRMode	saved_mode = 0;
+#include "../includes/mlx.h"
 
 
 int			mlx_ext_fullscreen(t_xvar *xvar, t_win_list *win, int fullscreen)

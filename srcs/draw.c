@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:19:49 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:20:51 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:08:49 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,40 @@ void	draw_matrix2(t_fdf *prog)
 
 void	draw_carre(t_fdf *prog, t_point2D pos, int size, int color)
 {
-	int	x;
-	int	y;
+    int	x;
+    int	y;
 
-	x = pos.x;
-	while (x < pos.x + size)
-	{
-		y = pos.y;
-		while (y < pos.y + size)
-		{
-			mlx_pixel_put(prog->mlx, prog->win, x, y, color);
-			y++;
-		}
-		x++;
-	}
+    if (!prog || !prog->mlx || !prog->win) // Check for NULL pointers
+        return;
+    x = pos.x;
+    while (x < pos.x + size)
+    {
+        y = pos.y;
+        while (y < pos.y + size)
+        {
+            mlx_pixel_put(prog->mlx, prog->win, x, y, color);
+            y++;
+        }
+        x++;
+    }
 }
 
 void	draw_rectangle(t_fdf *prog, t_point2D left, t_point2D right, int color)
 {
-	int	x;
-	int	y;
+    int	x;
+    int	y;
 
-	x = left.x;
-	while (x < right.x)
-	{
-		y = left.y;
-		while (y < right.y)
-		{
-			mlx_pixel_put(prog->mlx, prog->win, x, y, color);
-			y++;
-		}
-		x++;
-	}
+    if (!prog || !prog->mlx || !prog->win) // Check for NULL pointers
+        return;
+    x = left.x;
+    while (x < right.x)
+    {
+        y = left.y;
+        while (y < right.y)
+        {
+            mlx_pixel_put(prog->mlx, prog->win, x, y, color);
+            y++;
+        }
+        x++;
+    }
 }
