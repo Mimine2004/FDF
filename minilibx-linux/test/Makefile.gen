@@ -25,7 +25,8 @@ else
 	LFLAGS += -lbsd
 endif
 
-all: $(NAME)
+all:
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -Lminilibx-linux -lmlx -L$(LIB_LOC) -lXext -lX11 -lbsd
 
 $(NAME): $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(LFLAGS)
