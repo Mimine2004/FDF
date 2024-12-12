@@ -45,23 +45,24 @@ void	*mlx_init();
 **  return (void *)0 if failed
 */
 
-
+void free_map3D(t_point3D **map3D);
 /*
 ** Basic actions
 */
-
+void	ft_putstr_fd(char *s, int fd);
 /*
 **  return void *0 if failed
 */
-void *mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title);
+
 int		mlx_pixel_put(t_xvar *xvar,t_win_list *win,int x,int y,int color);
 /*
 **  origin for x & y is top left corner of the window
 **  y down is positive
 **  color is 0x00RRGGBB
 */
-
-
+void	*mlx_new_window(t_xvar *xvar,int size_x,int size_y,char *title);
+int		mlx_clear_window(t_xvar *xvar,t_win_list *win);
+int		mlx_loop(t_xvar *xvar);
 /*
 ** Image stuff
 */

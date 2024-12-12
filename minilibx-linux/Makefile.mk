@@ -49,12 +49,13 @@ SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
 OBJ_DIR = obj
 OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
 CFLAGS	= -O3 -I$(INC)
+LDFLAGS = -Lminilibx-linux -lmlx -lX11 -lXext -lbsd
 
 all	: $(NAME)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	ar -r $(NAME) $(OBJ)

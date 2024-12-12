@@ -1,6 +1,7 @@
 
-#include	"mlx.h"
-#include	"mlx_int.h"
+#include	"../includes/mlx.h"// Include the header file where mlx functions are declared
+#include <stdlib.h>           // For `exit`
+#include <stdio.h>            // For `printf`
 
 #define	WIN1_SX		242
 #define	WIN1_SY		242
