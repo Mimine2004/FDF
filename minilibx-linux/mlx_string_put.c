@@ -11,7 +11,7 @@
 
 #include "../includes/mlx.h"
 
-int		mlx_string_put(t_xvar *xvar,t_win_list *win,
+void		mlx_string_put(t_xvar *xvar,t_win_list *win,
 			       int x,int y,int color,char *string)
 {
    XGCValues	xgcv;

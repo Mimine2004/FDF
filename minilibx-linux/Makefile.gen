@@ -14,7 +14,6 @@ INC=/usr/include
 
 
 UNAME = $(shell uname)
-CC	= gcc
 ifeq ($(UNAME),FreeBSD)
 	CC = clang
 endif
@@ -46,34 +45,44 @@ SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
 	../srcs/get_next_line/get_next_line_utils.c \
 	../srcs/get_next_line/get_next_line.c 
 
-OBJ_DIR = obj
-OBJ	= $(addprefix $(OBJ_DIR)/,$(SRC:%.c=%.o))
-CFLAGS	= -O3 -I$(INC)
-LDFLAGS = -Lminilibx-linux -lmlx -lX11 -lXext -lbsd
+# Compiler
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./includes -I./minilibx-linux
 
-all	: $(NAME)
+# Libraries
+MINILIBX_DIR = minilibx-linux
+LIBS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lbsd
 
-$(OBJ_DIR)/%.o: %.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(LDFLAGS) -c $< -o $@
+# Sources
+SRCS_DIR = src/
+SRCS = $(SRCS_DIR)main.c \
+	   $(SRCS_DIR)draw.c \
+	   $(SRCS_DIR)matrix.c \
+	   $(SRCS_DIR)utils.c
+OBJS = $(SRCS:.c=.o)
 
-$(NAME): $(OBJ)
-	ar -r $(NAME) $(OBJ)
-	ranlib $(NAME)
-	cp $(NAME) $(NAME_UNAME)
+# Output binary
+NAME = fdf
 
-check: all
-	@test/run_tests.sh
+# Rules
+all: $(NAME)
 
-show:
-	@printf "NAME  		: $(NAME)\n"
-	@printf "NAME_UNAME	: $(NAME_UNAME)\n"
-	@printf "CC		: $(CC)\n"
-	@printf "CFLAGS		: $(CFLAGS)\n"
-	@printf "SRC		:\n	$(SRC)\n"
-	@printf "OBJ		:\n	$(OBJ)\n"
+$(NAME): $(OBJS)
+	@echo "Building MiniLibX..."
+	@$(MAKE) -C $(MINILIBX_DIR)
+	@echo "Compiling $(NAME)..."
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+	@echo "$(NAME) built successfully."
 
-clean	:
-	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: all check show clean
+clean:
+	@$(MAKE) -C $(MINILIBX_DIR) clean
+	rm -f $(OBJS)
+
+fclean: clean
+	@$(MAKE) -C $(MINILIBX_DIR) fclean
+	rm -f $(NAME)
+
+re: fclean all

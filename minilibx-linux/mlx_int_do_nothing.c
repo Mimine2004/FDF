@@ -10,7 +10,7 @@
 
 #include "../includes/mlx.h"
 
-int	mlx_int_do_nothing(void *param)
+void	mlx_int_do_nothing(void *param)
 {
-  
+	(void)param;
 }

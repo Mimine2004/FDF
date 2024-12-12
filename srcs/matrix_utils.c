@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:24:05 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:42:20 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:48:02 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include <math.h>
 
 static t_point3D	*get_rotor_x(t_matrix matrix)
 {
@@ -68,20 +69,6 @@ static t_point3D	*get_rotor_z(t_matrix matrix)
 	rotor[2].z = 1;
 	return (rotor);
 }
-static t_point3D	**get_rotor_matrix(t_matrix matrix)
-{
-	t_point3D	**rotor;
-	
-	rotor = (t_point3D **)malloc(sizeof(t_point3D *) * 3);
-	if (!rotor)
-		return (NULL);
-	rotor[0] = get_rotor_x(matrix);
-	rotor[1] = get_rotor_y(matrix);
-	rotor[2] = get_rotor_z(matrix);
-	if (!rotor[0] || !rotor[1] || !rotor[2])
-		return (free(rotor), NULL);
-	return (rotor);
-}
 
 
 void free_rotor_matrix(t_point3D **rotor)
@@ -96,3 +83,19 @@ void free_rotor_matrix(t_point3D **rotor)
         free(rotor);
     }
 }
+
+t_point3D	**get_rotor_matrix(t_matrix matrix)
+{
+	t_point3D	**rotor;
+	
+	rotor = (t_point3D **)malloc(sizeof(t_point3D *) * 3);
+	if (!rotor)
+		return (NULL);
+	rotor[0] = get_rotor_x(matrix);
+	rotor[1] = get_rotor_y(matrix);
+	rotor[2] = get_rotor_z(matrix);
+	if (!rotor[0] || !rotor[1] || !rotor[2])
+		return (free_rotor_matrix(rotor), NULL);
+	return (rotor);
+}
+

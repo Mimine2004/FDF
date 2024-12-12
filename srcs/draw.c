@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:19:49 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 09:17:28 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:33:38 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	draw_line(t_mlx *mlx, t_point2D start, t_point2D end, int color)
 	int	err;
 	int	e2;
 
-	dx = abs(end.x - start.x);
-	dy = abs(end.y - start.y);
+	dx = fabs(end.x - start.x);
+	dy = fabs(end.y - start.y);
 	sx = start.x < end.x ? 1 : -1;
 	sy = start.y < end.y ? 1 : -1;
 	if (dx > dy)
@@ -73,10 +73,10 @@ void	draw_matrix2(t_fdf *prog)
 {
 	if (!prog->mouse_down)
 	{
-		img_init_background((t_mlx *)prog->mlx, ((t_mlx *)prog->mlx)->width, ((t_mlx *)prog->mlx)->height,
+		mlx_init_background((t_mlx *)prog->mlx, ((t_mlx *)prog->mlx)->width, ((t_mlx *)prog->mlx)->height,
 			0x000000);
-		convert_map(&prog->matrix, 1);
-		draw_matrix(prog->matrix.matrix2D, &prog->mlx, prog->matrix.color);
+		convert_map(prog);
+		draw_matrix(prog->matrix.matrix2D, prog->mlx, prog->matrix.color);
 		mlx_put_image_to_window(prog->mlx, prog->win, prog->img.img,
 			prog->img.pos.x, prog->img.pos.y);
 	}

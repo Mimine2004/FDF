@@ -6,19 +6,19 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:22:49 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:23:00 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:08:14 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
 
-t_point3D multiple(t_point3D *a, t_point3D *b)
+t_point3D multiple(t_point3D a, t_point3D b)
 {
 	t_point3D	res;
 
-	res.x = a->x * b->x + a->y * b->y + a->z * b->z;
-	res.y = a->x * b->x + a->y * b->y + a->z * b->z;
-	res.z = a->x * b->x + a->y * b->y + a->z * b->z;
+	res.x = a.x * b.x + a.y * b.y + a.z * b.z;
+	res.y = a.x * b.x + a.y * b.y + a.z * b.z;
+	res.z = a.x * b.x + a.y * b.y + a.z * b.z;
 	return (res);
 }
 

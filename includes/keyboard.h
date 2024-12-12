@@ -6,12 +6,14 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 08:12:57 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 09:13:38 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:04:51 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYBOARD_H
 # define KEYBOARD_H
+
+# include "mlx.h"
 
 # define KEYBOARD_1			18
 # define KEYBOARD_2			19
