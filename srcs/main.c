@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 11:39:51 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/13 13:23:00 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:01:31 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,3 +131,5 @@ int main(void)
 
     return (0); // Technically unreachable due to mlx_loop()
 }
+
+//git de Olivier Cartier 
