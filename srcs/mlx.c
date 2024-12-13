@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 08:19:04 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/11 11:00:49 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:18:45 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
 
 /* typedef struct s_mlx
 {
@@ -20,7 +21,7 @@
 	int         height;
 } t_mlx; */
 
-void mlx_init_background(t_mlx *mlx, int width, int height, int color)
+void mlx_init_background(void *mlx_ptr, void *win_ptr, int width, int height, int color)
 {
 	int	x;
 	int	y;
@@ -31,14 +32,14 @@ void mlx_init_background(t_mlx *mlx, int width, int height, int color)
 		y = 0;
 		while (y < height)
 		{
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, color);
+			mlx_pixel_put(mlx_ptr,win_ptr, x, y, color);
 			y++;
 		}
 		x++;
 	}
 }
 
-void	mlx_put_line(t_mlx *mlx, t_point2D a, t_point2D b, int color)
+void	mlx_put_line(void *mlx_ptr, void *win_ptr, t_point2D a, t_point2D b, int color)
 {
     double dx = b.x - a.x;
     double dy = b.y - a.y;
@@ -52,7 +53,7 @@ void	mlx_put_line(t_mlx *mlx, t_point2D a, t_point2D b, int color)
 
     while (step--)
     {
-        mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, round(a.x), round(a.y), color);
+        mlx_pixel_put(mlx_ptr, win_ptr, round(a.x), round(a.y), color);
         a.x += x_increment;
         a.y += y_increment;
     }

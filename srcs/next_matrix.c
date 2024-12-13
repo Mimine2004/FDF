@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:23:13 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 10:13:43 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 10:28:08 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
 
 static int get_3D_height(char *filename) {
     int fd;

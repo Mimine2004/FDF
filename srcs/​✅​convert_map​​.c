@@ -6,7 +6,7 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:15:31 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 13:19:01 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 09:59:12 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/fdf.h"
 #include "mlx.h"
 
-int	get_3D_width(t_point3D **map3D)
+static int	get_3D_width(t_point3D **map3D)
 {
     int	i;
 
@@ -26,7 +26,7 @@ int	get_3D_width(t_point3D **map3D)
     return (i);
 }
 
-int	get_3D_height(t_point3D **map3D)
+static int	get_3D_height(t_point3D **map3D)
 {
     int	i;
 

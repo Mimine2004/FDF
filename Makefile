@@ -16,11 +16,13 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iminilibx-linux -Iincludes
 
 # Library Directories
-MINILIBX_DIR = minilibx-linux
-LIBS = -L$(MINILIBX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+# MINILIBX_DIR = minilibx-linux -L$(MINILIBX_DIR)
+MINILIBX_DIR = srcs
+LIBS = $(MINILIBX_DIR)/libmlx_Linux.a -lXext -lX11 -lm -lbsd
 
 # Sourcesrcs
 SRCS =	srcs/get_next_line/get_next_line.c \
+		srcs/get_next_line/get_next_line_utils.c \
 		srcs/convert_map.c \
 		srcs/draw.c \
 		srcs/draw_utils.c \
@@ -42,10 +44,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo "Building MiniLibX..."
-	@$(MAKE) -C $(MINILIBX_DIR) # Build MiniLibX first
 	@echo "Compiling FdF..."
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
-	@echo "$(NAME) built successfully!"
+	@echo "$(NAME) built successfully! 🌟"
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -53,9 +54,10 @@ $(NAME): $(OBJS)
 clean:
 	@echo "Cleaning FdF object files..."
 	rm -f $(OBJS)
+	@echo "FdF object files have been cleaned 👌"
 
 fclean: clean
-	@$(MAKE) -C $(MINILIBX_DIR) clean # Clean MiniLibX
 	rm -f $(NAME)
+	@echo "FdF itself has been cleaned 👌"
 
 re: fclean all

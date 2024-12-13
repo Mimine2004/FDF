@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:14:28 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 10:12:32 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 10:26:52 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
 
 void	set_isometric(t_fdf *prog)
 {

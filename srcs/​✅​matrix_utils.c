@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:24:05 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 14:48:02 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 10:27:57 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
 #include <math.h>
 
 static t_point3D	*get_rotor_x(t_matrix matrix)

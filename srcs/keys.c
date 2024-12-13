@@ -6,11 +6,12 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:10:22 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/10 10:10:30 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 10:26:56 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
 
 int	deal_key(int keyboard, void *param)
 {

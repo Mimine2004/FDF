@@ -6,19 +6,18 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 11:39:51 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 11:39:53 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:23:00 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"    // MiniLibX library
+#include "../includes/mlx.h"    // MiniLibX library
 #include <stdlib.h> // For malloc and free
 #include <stdio.h>  // For perror and printf
 #include <unistd.h> // For write
-
+#include "../includes/fdf.h"
 // Define your window dimensions
-#define WIN_WIDTH 800
-#define WIN_HEIGHT 600
-
+#define WIN_HEIGHT 1000
+#define WIN_WIDTH 1350
 // Define a structure to hold your program's data
 typedef struct s_data {
     void *mlx;      // MiniLibX instance
@@ -80,12 +79,34 @@ int close_window(t_data *data)
     handle_error(NULL, data); // Clean up and exit
     return (0); // MiniLibX requires returning 0 in event hooks
 }
+/* void test_draw(t_mlx *mlx)
+{
+    // Example of drawing a simple horizontal line
+    int x;
+    int y = 300; // Middle of the window vertically
 
+    for (x = 100; x < 700; x++)  // Draw horizontally across the screen
+    {
+        mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0xFFFFFF);  // White color
+    }
+} */
 // Main function - Entry point for your program
 int main(void)
 {
     t_data data; // Create a struct to hold your application's state
 
+	void *mlx_ptr = mlx_init();
+	if (!mlx_ptr) {
+        fprintf(stderr, "Error: MiniLibX initialization failed.\n");
+        return 1;
+    }
+	void *win_ptr = mlx_new_window(mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Test Draw Line");
+	if (!win_ptr) {
+        fprintf(stderr, "Error: Window creation failed.\n");
+        return 1;
+	}
+	
+	
     // Initialize the MiniLibX instance
     data.mlx = mlx_init();
     if (!data.mlx)
@@ -98,13 +119,15 @@ int main(void)
 
     // Create an empty image (optional, needed for rendering graphics/pixels)
     create_image(&data);
+	mlx_init_background(mlx_ptr,win_ptr, WIN_WIDTH, WIN_HEIGHT, 0x008AD5);
 
     // Set up event handlers
     mlx_key_hook(data.win, key_handler, &data);       // Key press event handler
     mlx_hook(data.win, 17, 0, close_window, &data);  // Handle window close (x button)
 
     // Enter the MiniLibX rendering loop
-    mlx_loop(data.mlx);
+
+	mlx_loop(data.mlx);
 
     return (0); // Technically unreachable due to mlx_loop()
 }

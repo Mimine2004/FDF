@@ -6,11 +6,13 @@
 /*   By: hhecquet <hhecquet@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:19:49 by hhecquet          #+#    #+#             */
-/*   Updated: 2024/12/12 13:33:38 by hhecquet         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:22:09 by hhecquet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/mlx.h"
+#include "../includes/fdf.h"
+
 
 void	draw_line(t_mlx *mlx, t_point2D start, t_point2D end, int color)
 {
@@ -73,8 +75,8 @@ void	draw_matrix2(t_fdf *prog)
 {
 	if (!prog->mouse_down)
 	{
-		mlx_init_background((t_mlx *)prog->mlx, ((t_mlx *)prog->mlx)->width, ((t_mlx *)prog->mlx)->height,
-			0x000000);
+		mlx_init_background((t_mlx *)prog->mlx, (t_mlx *)prog->win, ((t_mlx *)prog->mlx)->width, ((t_mlx *)prog->mlx)->height,
+			0x151515);
 		convert_map(prog);
 		draw_matrix(prog->matrix.matrix2D, prog->mlx, prog->matrix.color);
 		mlx_put_image_to_window(prog->mlx, prog->win, prog->img.img,
